@@ -19,17 +19,17 @@ class _MainPageState extends State<MainPage> {
             pinned: true,
             expandedHeight: 200,
             flexibleSpace: FlexibleSpaceBar(
-              background: FlutterLogo(),
+              background: const FlutterLogo(),
               titlePadding: EdgeInsets.zero,
               title: Container(
                 width: double.maxFinite,
                 height: double.maxFinite,
-                color: Color(0x70000000),
+                color: const Color(0x70000000),
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: [
+                    children: const [
                       Text(
                         'Sliver',
                         style: TextStyle(color: Colors.white),
@@ -77,7 +77,7 @@ class _MainPageState extends State<MainPage> {
                   color: Colors.green,
                   child: Text(
                     'Grid Item $index',
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   ),
                 );
               },
@@ -104,12 +104,13 @@ class _MainPageState extends State<MainPage> {
             });
           },
           child: AnimatedContainer(
-            height: selected[index] ? 150 : 100,
+            height: selected[index] ? 150 : 50,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100)),
+              borderRadius:
+                  const BorderRadius.only(bottomLeft: Radius.circular(100)),
               color: color,
             ),
-            duration: Duration(milliseconds: 600),
+            duration: const Duration(milliseconds: 600),
             curve: Curves.fastOutSlowIn,
             child: Align(
               alignment: Alignment.bottomCenter,
@@ -125,9 +126,16 @@ class _MainPageState extends State<MainPage> {
                           : CupertinoIcons.arrowtriangle_down_fill,
                       color: Colors.white,
                     ),
-                    Text(
-                      text,
-                      style: TextStyle(fontSize: 24, color: Colors.white),
+                    AnimatedDefaultTextStyle(
+                      child: Text(
+                        text,
+                      ),
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: selected[index]
+                              ? Colors.white
+                              : Colors.transparent),
+                      duration: const Duration(milliseconds: 100),
                     ),
                   ],
                 ),
@@ -145,7 +153,8 @@ class _MainPageState extends State<MainPage> {
       child: Container(
         height: 150,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100)),
+          borderRadius:
+              const BorderRadius.only(bottomLeft: Radius.circular(100)),
           color: color,
         ),
         child: Align(
@@ -156,7 +165,7 @@ class _MainPageState extends State<MainPage> {
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
               child: Text(
                 text,
-                style: TextStyle(fontSize: 24, color: Colors.white),
+                style: const TextStyle(fontSize: 24, color: Colors.white),
               ),
             ),
           ),
